@@ -1,4 +1,4 @@
-Sample program to learn Firebase Realtime Database with React
+##Sample program to learn Firebase Realtime Database with React
 
 Starting from create-react-app.
 Configure your firebase db on index.js (current istemporary readonly)
@@ -12,8 +12,8 @@ Import this json to your Firebase Realtime Database:
   }
 }
 
-install:
+##install:
 yarn install
 
-to execute:
+##execute:
 yarn start
