@@ -28,7 +28,7 @@ class App extends Component {
       })
     })
 
-    var connectedRef = firebase.database().ref("sensors");
+    const connectedRef = firebase.database().ref("sensors");
     connectedRef.on("child_added", (snap) => {
        this.setState({temperature:[ ...this.state.temperature, {
             val: snap.val(),
@@ -39,8 +39,7 @@ class App extends Component {
     });
 
     connectedRef.on("child_changed", (snap) => {
-      const temperature = this.state.temperature.map( temperatura =>
-        {
+      const temperature = this.state.temperature.map( temperatura => {
           if (snap.key === temperatura.id){
             return {
               val: snap.val(), 
@@ -52,6 +51,14 @@ class App extends Component {
       this.setState({temperature: temperature},() => {
         console.log('sensors changed:', snap.val(), this.state.temperature);
       })    
+    });
+
+    connectedRef.on("child_removed", (snap) => {
+        this.setState({
+          temperature: this.state.temperature.filter((temperatura) => {
+              return temperatura.id != snap.key
+            })
+        });
     });
 
   }
