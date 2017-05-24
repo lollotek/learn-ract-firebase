@@ -70,9 +70,9 @@ class App extends Component {
           <h2>Sensor reader</h2>
           <ConnStatus />
         </div>
-        <p className="App-intro">    
+        <div className="App-intro">    
           {sensors} 
-        </p>
+        </div>
         
       </div>
     );
